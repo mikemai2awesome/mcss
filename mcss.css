@@ -3,7 +3,7 @@
     --gutter: clamp(1ch, 2.5vmax, 3ch);
     --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
     --line-length: 66ch;
-    --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
+    --page-padding-inline: calc((100vw - min(var(--line-length), 80vi)) / 2);
     --font-serif: "Georgia", serif;
     --font-sans: "Verdana", system-ui, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
@@ -19,7 +19,7 @@
     --pt-bourgeois: 0.75em;
     font-family: var(--font-serif);
     font-size: clamp(100%, 90% + 0.5vw, 150%);
-    line-height: 1.45;
+    line-height: 1.5;
     color-scheme: dark light;
     accent-color: crimson;
   }
