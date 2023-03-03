@@ -6,8 +6,7 @@
     --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
     --font-serif: "Georgia", serif;
     --font-sans: "Verdana", system-ui, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
-      Liberation Mono, monospace;
+    --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     --pt-double-canon: 4.666em;
     --pt-canon: 3.999em;
     --pt-double-great-primer: 2.999em;
@@ -180,12 +179,18 @@
             margin-block-start: calc(var(--stack) / 4);
   }
 
+  :where(figure img) {
+    display: block;
+    margin-inline: auto;
+    padding-inline: calc(var(--gutter) / 2);
+  }
+
   :where(fieldset > ol, fieldset > ul) {
     list-style: none;
   }
 
   :where(p:not(:first-of-type)) {
-    text-indent: 1.5ch;
+    text-indent: calc(var(--gutter) / 2);
   }
 
   :where(h1, h2, h3, h4, h5, h6) + p {
@@ -269,7 +274,11 @@
     line-height: 1;
   }
 
-  :where(th, caption) {
+  :where(figcaption, caption) {
+    text-align: center;
+  }
+
+  :where(th) {
     text-align: start;
   }
 
@@ -279,10 +288,6 @@
 
   :where(figure) {
     overflow-x: auto;
-  }
-
-  :where(figure > img) {
-    display: block;
   }
 
   :where(img) {
@@ -415,5 +420,24 @@
 
   :where(input:required:invalid + mark) {
     display: block;
+  }
+}
+@layer utils {
+  .serif {
+    font-family: var(--font-serif);
+  }
+
+  .sans {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+
+  .word-break-all {
+    word-break: break-all;
+  }
+
+  .pangram {
+    -webkit-margin-before: calc(var(--stack) / 2);
+            margin-block-start: calc(var(--stack) / 2);
   }
 }
