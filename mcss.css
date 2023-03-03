@@ -1,0 +1,419 @@
+@layer config {
+  :root {
+    --gutter: clamp(1ch, 2.5vmax, 3ch);
+    --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
+    --line-length: 66ch;
+    --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
+    --font-serif: "Georgia", serif;
+    --font-sans: "Verdana", system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+      Liberation Mono, monospace;
+    --pt-double-canon: 4.666em;
+    --pt-canon: 3.999em;
+    --pt-double-great-primer: 2.999em;
+    --pt-double-pica: 2em;
+    --pt-paragon: 1.666em;
+    --pt-english: 1.166em;
+    --pt-pica: 1em;
+    --pt-small-pica: 0.916em;
+    --pt-long-primer: 0.833em;
+    --pt-bourgeois: 0.75em;
+    font-family: var(--font-serif);
+    font-size: clamp(100%, 90% + 0.5vw, 150%);
+    line-height: 1.45;
+    color-scheme: dark light;
+    accent-color: crimson;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      letter-spacing: 0.01ch;
+    }
+  }
+}
+@layer resets {
+  *,
+*::before,
+*::after {
+    font-feature-settings: "kern";
+    -webkit-font-kerning: normal;
+            font-kerning: normal;
+    -moz-osx-font-smoothing: grayscale !important;
+    -webkit-font-smoothing: antialiased !important;
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+}
+@layer elements {
+  *::-moz-selection {
+    background: crimson;
+  }
+  *::selection {
+    background: crimson;
+  }
+
+  *:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 2px;
+  }
+
+  *:disabled {
+    cursor: not-allowed;
+    border-style: groove;
+  }
+
+  *[readonly] {
+    border-style: dashed;
+    background: transparent;
+  }
+
+  :where(input:not([type="radio"], [type="checkbox"], [type="file"]), textarea, select) {
+    border: 1px inset;
+    background: rgba(128, 128, 128, 0.05);
+  }
+
+  :where(kbd, fieldset, dd, table) {
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(-6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
+  }
+
+  :where(hr) {
+    opacity: 0.2;
+    block-size: 0;
+    margin-block: calc(var(--stack) * 4);
+    border: 0;
+    -webkit-border-after: 1px solid;
+            border-block-end: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, currentcolor, transparent);
+  }
+
+  :where(header, main) + hr {
+    opacity: 0.4;
+    border-block-end-width: 1ex;
+  }
+
+  :where(section + hr) {
+    border-block-end-width: 0.5ex;
+  }
+
+  :where(header, section, main) + hr {
+    margin-block: calc(var(--stack) * 8);
+  }
+
+  :where(select, label, button, summary) {
+    cursor: pointer;
+  }
+
+  :where(article) {
+    max-inline-size: var(--line-length);
+  }
+
+  body {
+    padding-block: 5vmax;
+    padding-inline: var(--page-padding-inline);
+  }
+
+  :where(button, dd, th, td, kbd, select, input:not([type="radio"], [type="checkbox"]), textarea) {
+    padding-block: calc(var(--stack) / 6);
+    padding-inline: calc(var(--gutter) / 3);
+  }
+
+  :where(th, td) {
+    padding-block: calc(var(--stack) / 2);
+    padding-inline: calc(var(--gutter) / 2);
+  }
+
+  :where(caption, figcaption) {
+    padding-block: calc(var(--stack) / 2);
+  }
+
+  :where(figure, dl, pre, blockquote, table) {
+    -webkit-padding-before: calc(var(--stack) / 2.5);
+            padding-block-start: calc(var(--stack) / 2.5);
+  }
+
+  :where(details[open]) {
+    -webkit-padding-after: calc(var(--stack) * 2);
+            padding-block-end: calc(var(--stack) * 2);
+  }
+
+  :where(fieldset) {
+    padding-block: 0 var(--stack);
+    padding-inline: calc(var(--gutter) / 2);
+  }
+
+  :where(button) {
+    padding-inline: var(--gutter);
+  }
+
+  :where(*:not(p)
+      + p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, fieldset
+      li
+      + li) {
+    -webkit-margin-before: var(--stack);
+            margin-block-start: var(--stack);
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    -webkit-margin-before: calc(var(--stack) * 2);
+            margin-block-start: calc(var(--stack) * 2);
+  }
+
+  :where(li ol, li ul):first-child {
+    -webkit-margin-before: 0;
+            margin-block-start: 0;
+  }
+
+  :where(li li) {
+    -webkit-margin-start: 2ch;
+            margin-inline-start: 2ch;
+  }
+
+  :where(input, textarea, select) ~ * {
+    -webkit-margin-before: calc(var(--stack) / 4);
+            margin-block-start: calc(var(--stack) / 4);
+  }
+
+  :where(fieldset > ol, fieldset > ul) {
+    list-style: none;
+  }
+
+  :where(p:not(:first-of-type)) {
+    text-indent: 1.5ch;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) + p {
+    text-indent: 0;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.1;
+    letter-spacing: -0.02ch;
+  }
+
+  :where(h1, h2) {
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+
+  :where(h1) {
+    font-size: clamp( var(--pt-canon), var(--pt-pica) + 4.125vw, var(--pt-double-canon) );
+  }
+
+  :where(main h1) {
+    font-size: var(--pt-canon);
+  }
+
+  :where(h2) {
+    font-size: var(--pt-double-great-primer);
+  }
+
+  :where(h3, header h1 + p) {
+    font-size: var(--pt-double-pica);
+  }
+
+  :where(h4, blockquote p) {
+    font-size: var(--pt-paragon);
+  }
+
+  :where(h5, big) {
+    font-size: var(--pt-english);
+  }
+
+  :where(h6, legend) {
+    font-size: var(--pt-pica);
+  }
+
+  :where(code, label) {
+    font-size: var(--pt-long-primer);
+  }
+
+  :where(small, kbd, figcaption, table, sup, sub, input ~ *, textarea
+      ~ *, select ~ *) {
+    font-size: var(--pt-bourgeois);
+  }
+
+  :where(small, kbd, figcaption, label, legend, summary, table, sup, sub, input
+      ~ *, textarea ~ *, select ~ *) {
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+  }
+
+  :where(code) {
+    font-family: var(--font-mono);
+  }
+
+  :where(button, select, input, textarea, a) {
+    font: inherit;
+    /* Reset font. */
+  }
+
+  :where(summary > *) {
+    display: inline;
+    font: inherit;
+  }
+
+  :where(legend, summary) {
+    font-weight: bold;
+  }
+
+  :where(sup, sub) {
+    line-height: 1;
+  }
+
+  :where(th, caption) {
+    text-align: start;
+  }
+
+  :where(th, td) {
+    vertical-align: baseline;
+  }
+
+  :where(figure) {
+    overflow-x: auto;
+  }
+
+  :where(figure > img) {
+    display: block;
+  }
+
+  :where(img) {
+    block-size: auto;
+    max-inline-size: 100%;
+  }
+
+  :where(table) {
+    caption-side: bottom;
+    border-spacing: 0;
+  }
+
+  :where(tr > *:first-child) {
+    white-space: nowrap;
+  }
+
+  :where(kbd) {
+    padding-block: 1px 2px;
+    padding-inline: 0.5ch;
+    text-transform: uppercase;
+  }
+
+  :where(code) {
+    text-shadow: 0 0 3ex crimson;
+  }
+
+  :where(pre) {
+    display: block;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: break-word;
+  }
+
+  :where(pre code) {
+    display: block;
+    padding-block: var(--stack);
+    padding-inline: calc(var(--gutter) / 2);
+    max-block-size: 60vh;
+    overflow: auto;
+    border-block: 1px dashed crimson;
+  }
+
+  :where(dl) {
+    display: grid;
+    grid-template-columns: auto minmax(75%, 1fr);
+    gap: calc(var(--gutter) / 2);
+    align-items: baseline;
+  }
+
+  :where(dd) {
+    block-size: 100%;
+  }
+
+  :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+    display: block;
+    inline-size: 100%;
+  }
+
+  :where(input[type="radio"], input[type="checkbox"]) {
+    inline-size: 1.5ex;
+    block-size: 1.5ex;
+    vertical-align: baseline;
+  }
+
+  :where(input[type="file"]) {
+    padding-inline: 0;
+    border: 0;
+  }
+
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+            appearance: button;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  :where(input[type="checkbox"], input[type="radio"]) {
+    vertical-align: middle;
+  }
+
+  :where(select) {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+    border-radius: 0;
+  }
+
+  :where(a) {
+    color: inherit;
+    text-underline-offset: 0.3ex;
+  }
+
+  :where(abbr) {
+    cursor: help;
+  }
+
+  :where(abbr, dt) {
+    text-decoration: underline;
+    -webkit-text-decoration-style: dotted;
+            text-decoration-style: dotted;
+    text-underline-offset: 0.3ex;
+  }
+
+  :where(big) {
+    display: inline;
+  }
+
+  :where(blockquote q)::before {
+    position: absolute;
+    -webkit-margin-start: -1ex;
+            margin-inline-start: -1ex;
+  }
+
+  :where(blockquote q q)::before {
+    position: static;
+    -webkit-margin-start: unset;
+            margin-inline-start: unset;
+  }
+
+  :where(input:required + mark) {
+    display: none;
+    color: inherit;
+    background-color: transparent;
+  }
+
+  :where(input:required:invalid + mark) {
+    display: block;
+  }
+}
