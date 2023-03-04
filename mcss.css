@@ -77,7 +77,7 @@
     background: rgba(128, 128, 128, 0.05);
   }
 
-  :where(kbd, fieldset, dd, table, nav a) {
+  :where(kbd, fieldset, dd, nav a) {
     border: 1px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(-6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
@@ -85,6 +85,13 @@
 
   :where(nav a:hover) {
     border-image-source: linear-gradient(6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
+  }
+
+  :where(th, td) {
+    -webkit-border-after: 1px solid;
+            border-block-end: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, gray, rgba(128, 128, 128, 0.4));
   }
 
   :where(hr) {
@@ -139,7 +146,7 @@
     padding-block: calc(var(--stack) / 2);
   }
 
-  :where(figure, dl, pre, blockquote, table) {
+  :where(figure, dl, pre, blockquote) {
     -webkit-padding-before: calc(var(--stack) / 2.5);
             padding-block-start: calc(var(--stack) / 2.5);
   }
@@ -256,16 +263,16 @@
     font-size: var(--pt-pica);
   }
 
-  :where(code, label) {
+  :where(code, label, th, td) {
     font-size: var(--pt-long-primer);
   }
 
-  :where(small, kbd, figcaption, table, sup, sub, input ~ *, textarea
+  :where(small, kbd, figcaption, caption, sup, sub, input ~ *, textarea
       ~ *, select ~ *) {
     font-size: var(--pt-bourgeois);
   }
 
-  :where(small, kbd, figcaption, label, legend, summary, table, sup, sub, input
+  :where(small, kbd, figcaption, label, legend, summary, caption, sup, sub, input
       ~ *, textarea ~ *, select ~ *, nav a) {
     font-family: var(--font-sans);
     letter-spacing: 0;
