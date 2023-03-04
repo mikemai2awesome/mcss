@@ -79,7 +79,6 @@
 
   :where(kbd, fieldset, dd, nav a) {
     border: 1px solid;
-    border-image-slice: 1;
     border-image-source: linear-gradient(-6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
   }
 
@@ -90,8 +89,13 @@
   :where(th, td) {
     -webkit-border-after: 1px solid;
             border-block-end: 1px solid;
-    border-image-slice: 1;
     border-image-source: linear-gradient(to right, gray, rgba(128, 128, 128, 0.4));
+  }
+
+  :where(pre) {
+    -webkit-border-start: 0.5ex solid;
+            border-inline-start: 0.5ex solid;
+    border-image-source: linear-gradient(to bottom, crimson, transparent);
   }
 
   :where(hr) {
@@ -101,7 +105,6 @@
     border: 0;
     -webkit-border-after: 1px solid;
             border-block-end: 1px solid;
-    border-image-slice: 1;
     border-image-source: linear-gradient(to right, currentcolor, transparent);
   }
 
@@ -116,6 +119,10 @@
 
   :where(header, section, main) + hr {
     margin-block: calc(var(--stack) * 8);
+  }
+
+  :where(kbd, fieldset, dd, nav a, th, td, hr, pre) {
+    border-image-slice: 1;
   }
 
   :where(select, label, button, summary) {
@@ -146,7 +153,7 @@
     padding-block: calc(var(--stack) / 2);
   }
 
-  :where(figure, dl, pre, blockquote) {
+  :where(figure, dl, blockquote) {
     -webkit-padding-before: calc(var(--stack) / 2.5);
             padding-block-start: calc(var(--stack) / 2.5);
   }
@@ -156,7 +163,7 @@
             padding-block-end: calc(var(--stack) * 2);
   }
 
-  :where(fieldset) {
+  :where(fieldset, pre code) {
     padding-block: 0 var(--stack);
     padding-inline: calc(var(--gutter) / 2);
   }
@@ -355,11 +362,9 @@
 
   :where(pre code) {
     display: block;
-    padding-block: var(--stack);
-    padding-inline: calc(var(--gutter) / 2);
     max-block-size: 60vh;
     overflow: auto;
-    border-block: 1px dashed crimson;
+    text-shadow: none;
   }
 
   :where(dl) {
