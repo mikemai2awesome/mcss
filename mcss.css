@@ -7,7 +7,8 @@
     --page-padding-inline: calc((100vw - min(var(--line-length), 80vi)) / 2);
     --font-serif: "Georgia", serif;
     --font-sans: "Verdana", system-ui, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+      Liberation Mono, monospace;
     --pt-double-canon: 4.666em;
     --pt-canon: 3.999em;
     --pt-double-great-primer: 2.999em;
@@ -166,8 +167,13 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6, nav) {
-    -webkit-margin-before: calc(var(--stack) * 2);
-            margin-block-start: calc(var(--stack) * 2);
+    -webkit-margin-before: calc(var(--stack) * 1.5);
+            margin-block-start: calc(var(--stack) * 1.5);
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) + *:not(h1, h2, h3, h4, h5, h6) {
+    -webkit-margin-before: calc(var(--stack) / 2);
+            margin-block-start: calc(var(--stack) / 2);
   }
 
   :where(li ol:first-child, li ul:first-child, nav ul) {
@@ -209,6 +215,10 @@
   :where(h1, h2, h3, h4, h5, h6) {
     line-height: 1.1;
     letter-spacing: -0.02ch;
+  }
+
+  :where(header h1 ~ p) {
+    line-height: 1.25;
   }
 
   :where(h1, h2) {
