@@ -42,10 +42,12 @@ Set up the page template with your blog and use the `<main>` container as the ar
 </header>
 <hr>
 <main>
-  <!-- Markdown goes here --!>
+  <!-- Markdown --!>
+  {{ content }}
+  <!-- Markdown --!>
 </main>
 <hr>
 <footer>
-  {{ footer }}
+  Written by {{ author }} on {{ date }}.
 </footer>
 ```
