@@ -144,13 +144,16 @@
     padding-inline: calc(var(--gutter) / 3);
   }
 
-  :where(th, td) {
-    padding-block: calc(var(--stack) / 2);
+  :where(th, td, caption, figcaption, pre code) {
     padding-inline: calc(var(--gutter) / 2);
   }
 
-  :where(caption, figcaption) {
+  :where(th, td, caption, figcaption) {
     padding-block: calc(var(--stack) / 2);
+  }
+
+  :where(pre code) {
+    padding-block: var(--stack);
   }
 
   :where(figure, dl, blockquote) {
@@ -163,7 +166,7 @@
             padding-block-end: calc(var(--stack) * 2);
   }
 
-  :where(fieldset, pre code) {
+  :where(fieldset) {
     padding-block: 0 var(--stack);
     padding-inline: calc(var(--gutter) / 2);
   }
@@ -352,12 +355,25 @@
 
   :where(pre) {
     display: block;
+    position: relative;
+    color: white;
     white-space: -moz-pre-wrap;
     white-space: -o-pre-wrap;
     white-space: pre-wrap;
     word-spacing: normal;
     word-break: normal;
     word-wrap: break-word;
+    background: black;
+  }
+
+  :where(pre)::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    block-size: var(--stack);
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, black);
   }
 
   :where(pre code) {
@@ -463,4 +479,3 @@
     list-style: none;
   }
 }
-
