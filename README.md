@@ -7,7 +7,7 @@ MCSS is a tribute to the British type designer Matthew Carter. The framework is 
 ## Accessibility
 MCSS works with good old semantic HTML. It is accessible by default.
 
-### Page sctructure
+### Best wtih semantic HTML
 MCSS is designed for writing articles. To create a standard page, use the following semantic HTML template.
 
 ```html
