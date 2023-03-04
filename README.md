@@ -5,7 +5,7 @@ A SuperMinimalCSS framework inspired by the typefaces of Matthew Carter.
 MCSS is a tribute to the British type designer Matthew Carter. The framework is designed with two of Carter’s most commonly known typefaces—Georgia and Verdana. The New Yorker once described Carter as “the most widely read man in the world” because his typefaces are available as system fonts in most operating systems.
 
 ## Elements
-With MCSS, some of the most common HTML elements are styled and can be used without any classes. Here is a demo of all available elements. To use each element, simply inpsect in your browser and copy the HTML.
+With MCSS, some of the most common HTML elements are styled and can be used without any classes.
 
 * `p`
 * `q`
