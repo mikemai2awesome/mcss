@@ -2,7 +2,7 @@
 A SuperMinimalCSS framework inspired by the typefaces of Matthew Carter.
 
 ## Typography
-MCSS is a tribute to the British type designer Matthew Carter. The framework is designed with two of Carter’s most commonly known typefaces—Georgia and Verdana. The New Yorker once described Carter as "the most widely read man in the world" as his typefaces are available as system fonts in most operating systems.
+MCSS is a tribute to the British type designer Matthew Carter. The framework is designed with two of Carter’s most commonly known typefaces—Georgia and Verdana. The New Yorker once described Carter as “the most widely read man in the world” because his typefaces are available as system fonts in most operating systems.
 
 ## Accessibility
 MCSS works with good old semantic HTML. It is accessible by default.
