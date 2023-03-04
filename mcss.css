@@ -77,7 +77,7 @@
     background: rgba(128, 128, 128, 0.05);
   }
 
-  :where(kbd, fieldset, dd, nav a) {
+  :where(kbd, fieldset, dd, nav a, figure img) {
     border: 1px solid;
     border-image-source: linear-gradient(-6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
   }
@@ -121,7 +121,7 @@
     margin-block: calc(var(--stack) * 8);
   }
 
-  :where(kbd, fieldset, dd, nav a, th, td, hr, pre) {
+  :where(kbd, fieldset, dd, nav a, figure img, th, td, hr, pre) {
     border-image-slice: 1;
   }
 
@@ -463,3 +463,4 @@
     list-style: none;
   }
 }
+
