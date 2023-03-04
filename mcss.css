@@ -129,10 +129,6 @@
     cursor: pointer;
   }
 
-  :where(article) {
-    max-inline-size: var(--line-length);
-  }
-
   body {
     padding-block: 5vmax;
     padding-inline: var(--page-padding-inline);
@@ -178,12 +174,12 @@
   :where(*:not(p)
       + p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, fieldset
       li
-      + li) {
+      + li, nav) {
     -webkit-margin-before: var(--stack);
             margin-block-start: var(--stack);
   }
 
-  :where(h1, h2, h3, h4, h5, h6, nav) {
+  :where(h1, h2, h3, h4, h5, h6, header nav) {
     -webkit-margin-before: calc(var(--stack) * 1.5);
             margin-block-start: calc(var(--stack) * 1.5);
   }
@@ -465,7 +461,7 @@
   :where(input:required + mark) {
     display: none;
     color: inherit;
-    background-color: transparent;
+    background: transparent;
   }
 
   :where(input:required:invalid + mark) {
