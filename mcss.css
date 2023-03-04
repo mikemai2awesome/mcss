@@ -172,7 +172,7 @@
   }
 
   :where(*:not(p)
-      + p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, fieldset
+      + p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, form
       li
       + li, nav) {
     -webkit-margin-before: var(--stack);
@@ -213,7 +213,7 @@
     margin-inline: auto;
   }
 
-  :where(fieldset > ol, fieldset > ul) {
+  :where(form ol, form ul) {
     list-style: none;
   }
 
