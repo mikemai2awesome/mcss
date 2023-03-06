@@ -204,10 +204,6 @@
             margin-block-start: calc(var(--stack) / 4);
   }
 
-  :where(figure) {
-    padding-inline: var(--paragraph-indent);
-  }
-
   :where(figure img) {
     display: block;
     margin-inline: auto;
