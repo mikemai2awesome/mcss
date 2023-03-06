@@ -95,3 +95,10 @@ Set up the page template with your blog and use the `<main>` container as the ar
   Written by {{ author }} on {{ date }}.
 </footer>
 ```
+
+## Dark mode
+MCSS auto-detects your operating system’s settings. Dark design is displayed if dark mode is your preferred setting.
+
+
+
+
