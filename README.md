@@ -45,7 +45,7 @@ With MCSS, some of the most common HTML elements are styled and can be used with
 * `a`
 
 ## Accessibility
-MCSS works with good old semantic HTML. It is accessible by default.
+MCSS is written for plain HTML. It is accessible by default.
 
 ### Best wtih semantic HTML
 MCSS is designed for writing articles. To create a standard page, use the following semantic HTML template.
