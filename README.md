@@ -47,7 +47,7 @@ With MCSS, some of the most common HTML elements are styled and can be used with
 ## Accessibility
 MCSS is written for plain HTML. It is accessible by default.
 
-### Best wtih semantic HTML
+### Best with semantic HTML
 MCSS is designed for writing articles. To create a standard page, use the following semantic HTML template.
 
 ```html
@@ -57,14 +57,16 @@ MCSS is designed for writing articles. To create a standard page, use the follow
 </header>
 <hr>
 <main>
-  <section>
-    <h2>Section Title</h2>
-    <p>Section content.</p>
-  </section>
-  <section>
-    <h2>Section Title</h2>
-    <p>Section content.</p>
-  </section>
+  <article>
+    <section>
+      <h2>Section Title</h2>
+      <p>Section content.</p>
+    </section>
+    <section>
+      <h2>Section Title</h2>
+      <p>Section content.</p>
+    </section>
+  </article>
 </main>
 <hr>
 <footer>
@@ -82,9 +84,11 @@ Set up the page template with your blog and use the `<main>` container as the ar
 </header>
 <hr>
 <main>
-  <!-- Markdown --!>
-  {{ content }}
-  <!-- Markdown --!>
+  <article>
+    <!-- Markdown --!>
+    {{ content }}
+    <!-- Markdown --!>
+  </article>
 </main>
 <hr>
 <footer>
