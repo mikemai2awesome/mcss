@@ -75,7 +75,7 @@ MCSS is designed for writing articles. To create a standard page, use the follow
 ```
 
 ### Perfect for writing with Markdown
-Set up the page template with your blog and use the `<main>` container as the article body. Markdown renders semantic HTML so everything will just work.
+Set up the page template with your blog and use the `<main>` `<article>` container as the article body. Markdown renders semantic HTML so everything will just work.
 
 ```html
 <header>
