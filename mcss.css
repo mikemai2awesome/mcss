@@ -74,6 +74,7 @@
 
   :where(input:not([type="radio"], [type="checkbox"], [type="file"]), textarea, select) {
     border: 1px inset;
+    border-radius: 0;
     background: rgba(128, 128, 128, 0.05);
   }
 
@@ -419,7 +420,6 @@
             appearance: none;
     text-indent: 0.01px;
     text-overflow: "";
-    border-radius: 0;
   }
 
   :where(a) {
