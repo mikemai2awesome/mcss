@@ -83,10 +83,11 @@
     border-image-source: linear-gradient(-6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
   }
 
-  :where(nav a:hover) {
-    border-image-source: linear-gradient(6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
+  @media (hover: hover) {
+    :where(nav a:hover) {
+      border-image-source: linear-gradient(6deg, gray, rgba(128, 128, 128, 0.4), rgba(128, 128, 128, 0.4), gray);
+    }
   }
-
   :where(th, td) {
     -webkit-border-after: 1px solid;
             border-block-end: 1px solid;
