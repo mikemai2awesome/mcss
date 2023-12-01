@@ -85,9 +85,9 @@ Set up the page template with your blog and use the `<main>` `<article>` contain
 <hr>
 <main>
   <article>
-    <!-- Markdown --!>
+    <!-- Markdown -->
     {{ content }}
-    <!-- Markdown --!>
+    <!-- Markdown -->
   </article>
 </main>
 <hr>
