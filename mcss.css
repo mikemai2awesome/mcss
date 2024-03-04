@@ -3,7 +3,7 @@
     --gutter: clamp(3ch, 2.5vmax, 3.75ch);
     --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
     --paragraph-indent: calc(var(--gutter) / 1.5);
-    --line-length: 60ch;
+    --line-length: 66ch;
     --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
     --page-padding-block: calc(var(--stack) * 8);
     --landmark-hr-size: 1ex;
