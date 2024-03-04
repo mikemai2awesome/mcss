@@ -4,6 +4,21 @@ A modern classless CSS framework inspired by the typefaces of Matthew Carter.
 ## Typography
 MCSS is a tribute to the British type designer Matthew Carter. The framework is designed with two of Carter’s most commonly known typefaces—Georgia and Verdana. The New Yorker once described Carter as “the most widely read man in the world” because his typefaces are available as system fonts in most operating systems.
 
+## Theming
+MCSS is available in two typographically different themes.
+
+1. Georgia on my mind: Typeset primarily using Georgia with generous spacing.
+
+   ```html
+   <html data-theme="georgia">...</html>
+   ```
+
+2. Verdana mania: Typeset primarily using Verdana with compact spacing.
+
+   ```html
+   <html data-theme="verdana">...</html>
+   ```
+
 ## Elements
 With MCSS, some of the most common HTML elements are styled and can be used without any classes.
 
