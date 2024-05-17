@@ -48,8 +48,8 @@
 }
 @layer resets {
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     font-feature-settings: "kern";
     -webkit-font-kerning: normal;
             font-kerning: normal;
