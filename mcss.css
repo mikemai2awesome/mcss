@@ -48,8 +48,8 @@
 }
 @layer resets {
   *,
-  *::before,
-  *::after {
+  ::before,
+  ::after {
     font-feature-settings: "kern";
     -webkit-font-kerning: normal;
             font-kerning: normal;
@@ -64,24 +64,26 @@
   }
 }
 @layer elements {
-  *::-moz-selection {
+  ::-moz-selection {
+    color: white;
     background: crimson;
   }
-  *::selection {
+  ::selection {
+    color: white;
     background: crimson;
   }
 
-  *:focus-visible {
+  :focus-visible {
     outline: 2px solid currentcolor;
     outline-offset: 2px;
   }
 
-  *:disabled {
+  :disabled {
     cursor: not-allowed;
     border-style: groove;
   }
 
-  *[readonly] {
+  [readonly] {
     border-style: dashed;
     background: transparent;
   }
@@ -459,7 +461,7 @@
 
   :where(select) {
     -webkit-appearance: none;
-        -moz-appearance: none;
+       -moz-appearance: none;
             appearance: none;
     text-indent: 0.01px;
     text-overflow: "";
