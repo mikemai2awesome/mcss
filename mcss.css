@@ -459,7 +459,7 @@
 
   :where(select) {
     -webkit-appearance: none;
-       -moz-appearance: none;
+        -moz-appearance: none;
             appearance: none;
     text-indent: 0.01px;
     text-overflow: "";
@@ -497,6 +497,10 @@
     position: static;
     -webkit-margin-start: unset;
             margin-inline-start: unset;
+  }
+
+  :where(blockquote footer) {
+    padding-inline: 0;
   }
 
   :where(input:required + mark) {
