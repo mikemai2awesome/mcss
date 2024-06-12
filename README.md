@@ -89,6 +89,7 @@ MCSS is designed for writing articles. To create a standard page, use the follow
       <h2 id="hh">Section Title</h2>
       <p>Section content.</p>
     </section>
+    ...
   </article>
 </main>
 <hr>
@@ -107,7 +108,7 @@ Set up the page template with your blog and use the `<main>` `<article>` contain
   <nav>
     <ul role="list">
       <li>
-        <a href="{{ url }}">{{ link }}</a>
+        <a href="{{ url }}">{{ pageName }}</a>
       </li>
       ...
     </ul>
