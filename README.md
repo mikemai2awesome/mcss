@@ -69,6 +69,14 @@ MCSS is designed for writing articles. To create a standard page, use the follow
 <header>
   <h1>Page Title</h1>
   <p>Page description.</p>
+  <nav>
+    <ul role="list">
+      <li>
+        <a href="...">Link</a>
+      </li>
+      ...
+    </ul>
+  </nav>
 </header>
 <hr>
 <main>
@@ -96,6 +104,14 @@ Set up the page template with your blog and use the `<main>` `<article>` contain
 <header>
   <h1>{{ title }}</h1>
   <p>{{ description }}</p>
+  <nav>
+    <ul role="list">
+      <li>
+        <a href="{{ url }}">{{ link }}</a>
+      </li>
+      ...
+    </ul>
+  </nav>
 </header>
 <hr>
 <main>
