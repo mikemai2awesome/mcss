@@ -112,7 +112,12 @@ Set up the page template with your blog and use the `<main>` `<article>` contain
 ```
 
 ## Dark mode
-MCSS auto-detects your operating system’s settings. Dark design is displayed if dark mode is your preferred setting.
+MCSS auto-detects your operating system’s settings. Dark design is displayed if dark mode is your preferred setting. All colors—except Crimson—are defined by the browser. The black background in dark mode could appear slightly different from browser to browser.
+
+## Notes
+1. MCSS is a variant of Super­Minimal­CSS crafted by Mike Mai.
+2. Georgia and Verdana might not be available in certain Android devices and device specific system fonts would render instead. Custom @font-face and web font licences are required to ensure Georgia and Verdana display in all devices.
+
 
 
 
