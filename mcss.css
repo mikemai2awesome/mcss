@@ -48,8 +48,8 @@
 }
 @layer resets {
   *,
-  ::before,
-  ::after {
+::before,
+::after {
     font-feature-settings: "kern";
     -webkit-font-kerning: normal;
             font-kerning: normal;
@@ -64,6 +64,11 @@
   }
 }
 @layer elements {
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
   ::-moz-selection {
     color: white;
     background: crimson;
