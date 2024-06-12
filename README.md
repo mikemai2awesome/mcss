@@ -81,12 +81,12 @@ MCSS is designed for writing articles. To create a standard page, use the follow
 <hr>
 <main>
   <article>
-    <section>
-      <h2>Section Title</h2>
+    <section aria-labelledby="h">
+      <h2 id="h">Section Title</h2>
       <p>Section content.</p>
     </section>
-    <section>
-      <h2>Section Title</h2>
+    <section aria-labelledby="hh">
+      <h2 id="hh">Section Title</h2>
       <p>Section content.</p>
     </section>
   </article>
