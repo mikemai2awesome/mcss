@@ -1,4 +1,3 @@
-@layer config, resets, elements;
 @layer config {
   :root {
     --gutter: clamp(1rem, 2.5vmax, 1.5rem);
