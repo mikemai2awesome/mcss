@@ -1,9 +1,231 @@
-@layer config, resets, elements;
+@layer config, resets, elements, custom;
+@layer custom {
+  .serif {
+    font-family: "Georgia", serif;
+  }
+
+  .sans {
+    font-family: "Verdana", system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+
+  .word-break-all {
+    word-break: break-all;
+  }
+
+  body:has(.hero) {
+    -webkit-padding-before: 0;
+    padding-block-start: 0;
+  }
+
+  .hero {
+    display: grid;
+    margin: 0;
+    padding-inline: 10vi;
+    -webkit-padding-after: var(--page-padding-block);
+    padding-block-end: var(--page-padding-block);
+    color: white;
+    background-image: url("https://mikemai.net/mcss/img/mc-hero-edited.jpg");
+    background-size: cover;
+  }
+  .hero h1 {
+    display: grid;
+    grid-template-areas: "start start" "name description" "emphasis emphasis" "end end";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: minmax(var(--page-padding-block), 1fr) auto auto var(
+        --stack
+      );
+    gap: calc(var(--gutter) / 2);
+    row-gap: var(--stack);
+    min-block-size: 100svb;
+    margin: 0;
+    font-size: inherit;
+    letter-spacing: 0;
+    overflow-wrap: initial;
+    -webkit-hyphens: initial;
+    -ms-hyphens: initial;
+    hyphens: initial;
+  }
+  .hero h1::before {
+    display: none;
+  }
+  .hero h1 > span {
+    display: block;
+  }
+  .hero h1 > .sans {
+    font-size: var(--pt-pica);
+  }
+  .hero h1 > .sans:nth-child(1) {
+    grid-area: name;
+    inline-size: -webkit-min-content;
+    inline-size: -moz-min-content;
+    inline-size: min-content;
+    padding-block: 0.5ex;
+    padding-inline: 0.5ch;
+    text-transform: uppercase;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    color: white;
+    background-color: crimson;
+  }
+  .hero h1 > .sans:nth-child(2) {
+    display: grid;
+    place-items: center;
+    grid-area: description;
+    max-inline-size: 14em;
+    line-height: 1.3;
+  }
+  .hero h1 > .serif {
+    grid-area: emphasis;
+    font-size: clamp(var(--pt-double-canon), 0.5em + 8.5vi, 18rem);
+    line-height: 1;
+    letter-spacing: -0.025ex;
+  }
+  .hero + hr {
+    -webkit-margin-before: 0;
+    margin-block-start: 0;
+  }
+
+  .pangram {
+    -webkit-margin-before: calc(var(--stack) / 2);
+    margin-block-start: calc(var(--stack) / 2);
+  }
+
+  .pangram::before {
+    display: none;
+  }
+
+  .specimen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(4ex, 1fr));
+    -webkit-margin-before: var(--stack);
+    margin-block-start: var(--stack);
+    -webkit-border-start: 1px solid;
+    border-inline-start: 1px solid;
+    -webkit-border-before: 1px solid;
+    border-block-start: 1px solid;
+  }
+  @media (forced-colors: none) {
+    .specimen {
+      border-image-slice: 1;
+      border-image-source: linear-gradient(
+        to bottom,
+        gray,
+        rgba(128, 128, 128, 0.4)
+      );
+    }
+  }
+  .specimen > * {
+    display: grid;
+    place-items: center;
+    block-size: 4ex;
+    -webkit-border-end: 1px solid;
+    border-inline-end: 1px solid;
+    -webkit-border-after: 1px solid;
+    border-block-end: 1px solid;
+  }
+  @media (forced-colors: none) {
+    .specimen > * {
+      border-image-slice: inherit;
+      border-image-source: linear-gradient(
+        to right,
+        rgba(128, 128, 128, 0.4),
+        gray,
+        rgba(128, 128, 128, 0.4)
+      );
+    }
+  }
+
+  .theme {
+    display: flex;
+    gap: calc(var(--gutter) / 2);
+    row-gap: var(--stack);
+    list-style: none;
+  }
+  .theme > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--stack);
+    padding: 1em;
+    border: 1px solid;
+  }
+  @media (forced-colors: none) {
+    .theme > li {
+      border-image-slice: 1;
+      border-image-source: linear-gradient(
+        -6deg,
+        gray,
+        rgba(128, 128, 128, 0.4),
+        rgba(128, 128, 128, 0.4),
+        gray
+      );
+    }
+  }
+  .theme > li button {
+    block-size: 101%;
+  }
+
+  .theme--borderless > li {
+    padding: 0;
+  }
+  @media (forced-colors: none) {
+    .theme--borderless > li {
+      border: 0;
+    }
+  }
+
+  #theming-section {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-start: 0;
+    z-index: 1;
+    padding-inline: 10vi;
+    background-color: canvas;
+  }
+  #theming-section button {
+    padding-block: 0.5em;
+    padding-inline: 0;
+    font-size: var(--pt-bourgeois);
+    border: 0;
+    background: transparent;
+  }
+  #theming-section button[aria-pressed="true"] {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  @media (hover: hover) {
+    #theming-section button:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+  @media (forced-colors: none) {
+    #theming-section button {
+      border-bottom: 0.3ex solid rgba(128, 128, 128, 0.4);
+    }
+    #theming-section button[aria-pressed="true"] {
+      border-color: currentcolor;
+      text-decoration: none;
+    }
+  }
+  @media (forced-colors: none) and (hover: hover) {
+    #theming-section button:hover {
+      border-color: currentcolor;
+      text-decoration: none;
+    }
+  }
+
+  h2 {
+    scroll-margin-block-start: calc(var(--page-padding-block) / 2);
+  }
+}
 @layer config {
   :root {
     --gutter: clamp(1rem, 2.5vmax, 1.5rem);
     --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
-    --paragraph-indent: 3ch;
+    --paragraph-indent: calc(var(--gutter) / 1.25);
     --line-length: 66ch;
     --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
     --page-padding-block: calc(var(--stack) * 8);
@@ -38,6 +260,7 @@
     color-scheme: dark light;
     accent-color: crimson;
   }
+
   [data-theme="verdana"] {
     --landmark-hr-size: 2px;
     --hr-size: 1px;
@@ -67,31 +290,37 @@
       -webkit-font-smoothing: antialiased !important;
     }
   }
+
   * {
     margin: 0;
     padding: 0;
   }
+
   input:is([type="checkbox"], [type="radio"]),
   select,
   label,
   button {
     cursor: pointer;
   }
+
   input,
   select,
   textarea,
   button {
     font: inherit;
   }
+
   img,
   svg,
   video {
     max-inline-size: 100%;
     block-size: auto;
   }
+
   svg {
     fill: currentcolor;
   }
+
   @media (forced-colors: active) {
     button {
       border: 1px solid;
@@ -112,26 +341,32 @@
     color: white;
     background: crimson;
   }
+
   ::-moz-selection {
     color: white;
     background: crimson;
   }
+
   ::selection {
     color: white;
     background: crimson;
   }
+
   :where(:focus-visible) {
     outline: var(--focus-outline);
     outline-offset: var(--focus-outline-offset);
   }
+
   :disabled {
     border-style: groove;
     cursor: not-allowed;
   }
+
   [readonly] {
     border-style: dashed;
     background: transparent;
   }
+
   :where(
       input:not([type="radio"], [type="checkbox"], [type="file"]),
       textarea,
@@ -142,9 +377,11 @@
     /* TODO: test this */
     background: color-mix(in hsl, canvasText 5%, transparent);
   }
+
   :where(kbd, fieldset, dd, nav a, figure img) {
     border: 1px solid;
   }
+
   @media (forced-colors: none) {
     :where(kbd, fieldset, dd, nav a, figure img) {
       border-image-source: linear-gradient(-6deg, var(--border-image-source));
@@ -154,6 +391,7 @@
     -webkit-border-after: 1px solid;
     border-block-end: 1px solid;
   }
+
   @media (forced-colors: none) {
     :where(th, td) {
       border-image-source: linear-gradient(
@@ -167,6 +405,7 @@
     -webkit-border-start: var(--hr-size) solid;
     border-inline-start: var(--hr-size) solid;
   }
+
   @media (forced-colors: none) {
     :where(pre) {
       border-image-source: linear-gradient(to bottom, crimson, transparent);
@@ -179,6 +418,7 @@
     -webkit-border-after: 1px solid;
     border-block-end: 1px solid;
   }
+
   @media (forced-colors: none) {
     :where(hr) {
       border-image-source: linear-gradient(to right, currentcolor, transparent);
@@ -187,6 +427,7 @@
   :where(header, main) + hr {
     border-block-end-width: var(--landmark-hr-size);
   }
+
   @media (forced-colors: none) {
     :where(header, main) + hr {
       border-image-source: linear-gradient(
@@ -210,18 +451,23 @@
   :where(section + hr) {
     border-block-end-width: var(--hr-size);
   }
+
   :where(header, section, main) + hr {
     margin-block: var(--landmark-hr-margin-block);
   }
+
   :where(select, label, button, summary) {
     cursor: pointer;
   }
+
   body {
     padding-block: var(--page-padding-block);
   }
+
   :where(header, main, footer) {
     padding-inline: var(--page-padding-inline);
   }
+
   :where(
       button,
       dd,
@@ -236,30 +482,38 @@
     padding-block: calc(var(--stack) / 6);
     padding-inline: calc(var(--gutter) / 3);
   }
+
   :where(th, td, caption, figcaption, pre code) {
     padding-inline: calc(var(--gutter) / 2);
   }
+
   :where(th, td, caption, figcaption) {
     padding-block: calc(var(--stack) / 2);
   }
+
   :where(pre code) {
     padding-block: var(--stack);
   }
+
   :where(figure, dl, blockquote) {
     -webkit-padding-before: calc(var(--stack) / 2.5);
     padding-block-start: calc(var(--stack) / 2.5);
   }
+
   :where(details[open]) {
     -webkit-padding-after: var(--stack);
     padding-block-end: var(--stack);
   }
+
   :where(fieldset) {
     padding-block: 0 var(--stack);
     padding-inline: calc(var(--gutter) / 2);
   }
+
   :where(button) {
     padding-inline: var(--gutter);
   }
+
   :where(
       *:not(p) + p,
       figure,
@@ -277,77 +531,98 @@
     -webkit-margin-before: var(--stack);
     margin-block-start: var(--stack);
   }
+
   :where(h1, h2, h3, h4, h5, h6, header nav) {
     -webkit-margin-before: calc(var(--stack) * 1.5);
     margin-block-start: calc(var(--stack) * 1.5);
   }
+
   :where(h1, h2, h3, h4, h5, h6) + *:not(h1, h2, h3, h4, h5, h6) {
     -webkit-margin-before: calc(var(--stack) / 2);
     margin-block-start: calc(var(--stack) / 2);
   }
+
   :where(li ol:first-of-type, li ul:first-of-type, nav ul) {
     -webkit-margin-before: 0;
     margin-block-start: 0;
   }
+
   :where(li li) {
     -webkit-margin-start: 2ch;
     margin-inline-start: 2ch;
   }
+
   :where(input, textarea, select) ~ * {
     -webkit-margin-before: calc(var(--stack) / 4);
     margin-block-start: calc(var(--stack) / 4);
   }
+
   :where(figure img) {
     display: block;
     margin-inline: auto;
   }
+
   :where(form ol, form ul) {
     list-style: none;
   }
+
   :where(p:not(:first-of-type)) {
     text-indent: var(--paragraph-indent);
   }
+
   :where(h1, h2, h3, h4, h5, h6, pre) + p {
     text-indent: 0;
   }
+
   :where(h1, h2, h3, h4, h5, h6) {
     line-height: 1.1;
     letter-spacing: -0.02ch;
     text-wrap: pretty;
   }
+
   :where(header h1 ~ p) {
     line-height: 1.25;
   }
+
   :where(h1, h2, h3, h4) {
     overflow-wrap: break-word;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
   }
+
   :where(h1) {
     font-size: var(--pt-double-canon);
   }
+
   :where(main h1) {
     font-size: var(--pt-canon);
   }
+
   :where(h2) {
     font-size: var(--pt-double-great-primer);
   }
+
   :where(h3, header h1 ~ p) {
     font-size: var(--pt-double-pica);
   }
+
   :where(h4, blockquote p, big) {
     font-size: var(--pt-paragon);
   }
+
   :where(h5) {
     font-size: var(--pt-english);
   }
+
   :where(h6, legend) {
     font-size: var(--pt-pica);
   }
+
   :where(code, label, th, td) {
     font-size: var(--pt-long-primer);
   }
+
   :where(
       small,
       kbd,
@@ -361,6 +636,7 @@
     ) {
     font-size: var(--pt-bourgeois);
   }
+
   :where(
       small,
       kbd,
@@ -379,57 +655,72 @@
     font-family: var(--font-variant);
     letter-spacing: 0;
   }
+
   :where(code) {
     font-family: var(--font-mono);
   }
+
   :where(button, select, input, textarea, summary > *) {
     font: inherit;
     /* Reset font. */
   }
+
   :where(nav a) {
     text-decoration: none;
   }
   :where(nav a)[aria-current] {
     border-image-source: unset;
   }
+
   :where(summary > *) {
     display: inline;
   }
+
   :where(legend, summary, button) {
     font-weight: 700;
   }
+
   :where(sup, sub) {
     line-height: 1;
   }
+
   :where(figcaption, caption) {
     text-align: center;
   }
+
   :where(th) {
     text-align: start;
   }
+
   :where(th, td) {
     vertical-align: baseline;
   }
+
   :where(figure) {
     overflow-x: auto;
   }
+
   :where(img) {
     block-size: auto;
     max-inline-size: 100%;
   }
+
   :where(table) {
     border-spacing: 0;
     caption-side: bottom;
   }
+
   :where(tr > *:first-child) {
     white-space: nowrap;
   }
+
   :where(kbd) {
     padding-block: 1px 2px;
     padding-inline: 0.5ch;
     letter-spacing: 0.1ch;
     text-transform: uppercase;
   }
+
   :where(code) {
     text-decoration: underline;
     -webkit-text-decoration-style: dashed;
@@ -438,6 +729,7 @@
     text-decoration-color: crimson;
     text-underline-offset: 0.35ex;
   }
+
   :where(pre) {
     display: block;
     position: relative;
@@ -448,6 +740,7 @@
     color: white;
     background: black;
   }
+
   :where(pre)::after {
     position: absolute;
     inset-inline: 0;
@@ -458,6 +751,7 @@
     inset-block-end: 0;
     block-size: var(--stack);
   }
+
   :where(pre code) {
     display: block;
     text-decoration: none;
@@ -465,37 +759,45 @@
     max-block-size: 60vh;
     color-scheme: dark;
   }
+
   :where(dl) {
     display: grid;
     align-items: baseline;
     grid-template-columns: auto minmax(75%, 1fr);
     gap: calc(var(--gutter) / 2);
   }
+
   :where(dd) {
     block-size: 100%;
   }
+
   :where(input:not([type="checkbox"], [type="radio"]), select, textarea) {
     display: block;
     inline-size: 100%;
   }
+
   :where(input[type="radio"], input[type="checkbox"]) {
     inline-size: 1.5ex;
     block-size: 1.5ex;
     vertical-align: baseline;
   }
+
   :where(input[type="file"]) {
     padding-inline: 0;
     border: 0;
   }
+
   ::-webkit-file-upload-button {
     font: inherit;
     cursor: pointer;
     -webkit-appearance: auto;
     appearance: auto;
   }
+
   :where(input[type="checkbox"], input[type="radio"]) {
     vertical-align: middle;
   }
+
   :where(select) {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -503,78 +805,96 @@
     text-indent: 0.01px;
     text-overflow: "";
   }
+
   :where(a) {
     color: inherit;
     -webkit-text-decoration-style: var(--underline);
     text-decoration-style: var(--underline);
     text-underline-offset: 0.3ex;
   }
+
   :where(abbr) {
     cursor: help;
   }
+
   :where(abbr, dt) {
     text-decoration: underline;
     -webkit-text-decoration-style: dotted;
     text-decoration-style: dotted;
     text-underline-offset: 0.3ex;
   }
+
   :where(big) {
     display: inline;
   }
+
   :where(blockquote q)::before {
     position: absolute;
     -webkit-margin-start: -1ex;
     margin-inline-start: -1ex;
   }
+
   :where(blockquote q q)::before {
     position: static;
     -webkit-margin-start: unset;
     margin-inline-start: unset;
   }
+
   :where(blockquote footer) {
     padding-inline: 0;
   }
+
   :where(input:required + mark) {
     display: none;
     color: inherit;
     background: transparent;
   }
+
   :where(input:required:invalid + mark) {
     display: block;
   }
+
   :where(nav ul) {
     display: flex;
     gap: calc(var(--gutter) / 2);
     flex-wrap: wrap;
     list-style: none;
   }
+
   [data-theme="verdana"]
     :where(h1, h2, h3, h4, h5, h6, header h1 ~ p, blockquote p) {
     font-size: inherit;
     line-height: inherit;
     letter-spacing: 0;
   }
+
   [data-theme="verdana"] :where(h1, h2, h3, h4, h5, h6)::before {
     position: absolute;
     font-weight: 400;
     opacity: 50%;
     transform: translateX(-125%);
   }
+
   [data-theme="verdana"] :where(h1)::before {
     content: "H1";
   }
+
   [data-theme="verdana"] :where(h2)::before {
     content: "H2";
   }
+
   [data-theme="verdana"] :where(h3)::before {
     content: "H3";
   }
+
   [data-theme="verdana"] :where(h4)::before {
     content: "H4";
   }
+
   [data-theme="verdana"] :where(h5)::before {
     content: "H5";
   }
+
   [data-theme="verdana"] :where(h6)::before {
     content: "H6";
   }
