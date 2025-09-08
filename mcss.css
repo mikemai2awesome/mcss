@@ -7,7 +7,7 @@
     --page-padding-inline: calc((100vi - min(var(--line-length), 80vi)) / 2);
     --page-padding-block: calc(var(--stack) * 8);
     --landmark-hr-size: 1ex;
-    --landmark-hr-margin-block: calc(var(--stack) * 8);
+    --landmark-hr-margin-block: var(--page-padding-block);
     --hr-size: 0.5ex;
     --hr-margin-block: calc(var(--stack) * 4);
     --border-image-source: gray, color-mix(in oklch, gray 40%, transparent),
@@ -19,7 +19,7 @@
     --font-variant: "Verdana", system-ui, sans-serif;
     --font-mono: ui-monospace, sfmono-regular, sf mono, menlo, consolas,
       liberation mono, monospace;
-    --font-size: clamp(95%, 80% + 0.5vi, 150%);
+    --font-size: clamp(95%, 80% + 0.5vi, 130%);
     --leading: 1.475;
     --pt-double-canon: clamp(3em, 2.5179em + 2.4107vi, 4.666em);
     --pt-canon: clamp(2.5em, 2.2321em + 1.9643vi, 3.999em);
@@ -52,21 +52,18 @@
 }
 
 @layer resets {
-
   *,
-  ::before,
-  ::after {
+::before,
+::after {
     font-feature-settings: "kern";
     -webkit-font-kerning: normal;
-    font-kerning: normal;
+            font-kerning: normal;
     box-sizing: border-box;
   }
-
   @media (prefers-color-scheme: dark) {
-
     *,
-    ::before,
-    ::after {
+::before,
+::after {
       -moz-osx-font-smoothing: grayscale !important;
       -webkit-font-smoothing: antialiased !important;
     }
@@ -78,22 +75,22 @@
   }
 
   input:is([type="checkbox"], [type="radio"]),
-  select,
-  label,
-  button {
+select,
+label,
+button {
     cursor: pointer;
   }
 
   input,
-  select,
-  textarea,
-  button {
+select,
+textarea,
+button {
     font: inherit;
   }
 
   img,
-  svg,
-  video {
+svg,
+video {
     max-inline-size: 100%;
     block-size: auto;
   }
@@ -107,7 +104,6 @@
       border: 1px solid;
     }
   }
-
   @media (prefers-reduced-motion: no-preference) {
     :root {
       scroll-behavior: smooth;
@@ -120,7 +116,6 @@
     color: white;
     background: crimson;
   }
-
   ::selection {
     color: white;
     background: crimson;
@@ -167,10 +162,9 @@
       border-image-source: linear-gradient(-6deg, var(--border-image-source));
     }
   }
-
   :where(th, td) {
     -webkit-border-after: 1px solid;
-    border-block-end: 1px solid;
+            border-block-end: 1px solid;
   }
 
   @media (forced-colors: none) {
@@ -178,10 +172,9 @@
       border-image-source: linear-gradient(to right, gray, color-mix(in oklch, gray 60%, transparent));
     }
   }
-
   :where(pre) {
     -webkit-border-start: var(--hr-size) solid;
-    border-inline-start: var(--hr-size) solid;
+            border-inline-start: var(--hr-size) solid;
   }
 
   @media (forced-colors: none) {
@@ -189,13 +182,12 @@
       border-image-source: linear-gradient(to bottom, crimson, transparent);
     }
   }
-
   :where(hr) {
     block-size: 0;
     margin-block: var(--hr-margin-block);
     border: 0;
     -webkit-border-after: 1px solid;
-    border-block-end: 1px solid;
+            border-block-end: 1px solid;
   }
 
   @media (forced-colors: none) {
@@ -203,34 +195,30 @@
       border-image-source: linear-gradient(to right, currentcolor, transparent);
     }
   }
-
-  :where(header, main)+hr {
+  :where(header, main) + hr {
     border-block-end-width: var(--landmark-hr-size);
   }
 
   @media (forced-colors: none) {
-    :where(header, main)+hr {
+    :where(header, main) + hr {
       border-image-source: linear-gradient(to right, transparent, currentcolor, transparent);
     }
   }
-
   @media (forced-colors: none) {
     :where(kbd, fieldset, dd, nav a, figure img, th, td, hr, pre) {
       border-image-slice: 1;
     }
   }
-
   @media (forced-colors: none) and (any-hover: hover) {
     :where(nav a:hover) {
       border-image-source: linear-gradient(6deg, var(--border-image-source));
     }
   }
-
   :where(section + hr) {
     border-block-end-width: var(--hr-size);
   }
 
-  :where(header, section, main)+hr {
+  :where(header, section, main) + hr {
     margin-block: var(--landmark-hr-margin-block);
   }
 
@@ -242,12 +230,23 @@
   body {
     padding-block: var(--page-padding-block);
   }
+  body:not(:has(> header, > footer)) {
+    display: grid;
+    place-items: center;
+    min-inline-size: 0;
+    min-block-size: 100dvb;
+  }
+  body:not(:has(> header)) h1 {
+    -webkit-margin-before: 0;
+            margin-block-start: 0;
+  }
 
   :where(header, main, footer) {
     padding-inline: var(--page-padding-inline);
   }
 
-  :where(button, dd, th, td, kbd, select, input:not([type="radio"], [type="checkbox"]), textarea, nav a) {
+  :where(button, dd, th, td, kbd, select, input:not([type="radio"], [type="checkbox"]), textarea, nav
+      a) {
     padding-block: calc(var(--stack) / 6);
     padding-inline: calc(var(--gutter) / 3);
   }
@@ -266,12 +265,12 @@
 
   :where(figure, dl, blockquote) {
     -webkit-padding-before: calc(var(--stack) / 2.5);
-    padding-block-start: calc(var(--stack) / 2.5);
+            padding-block-start: calc(var(--stack) / 2.5);
   }
 
   :where(details[open]) {
     -webkit-padding-after: var(--stack);
-    padding-block-end: var(--stack);
+            padding-block-end: var(--stack);
   }
 
   :where(fieldset) {
@@ -283,34 +282,37 @@
     padding-inline: var(--gutter);
   }
 
-  :where(*:not(p) + p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, form li + li, nav) {
+  :where(*:not(p)
+      + p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, form
+      li
+      + li, nav) {
     -webkit-margin-before: var(--stack);
-    margin-block-start: var(--stack);
+            margin-block-start: var(--stack);
   }
 
   :where(h1, h2, h3, h4, h5, h6, header nav) {
     -webkit-margin-before: calc(var(--stack) * 1.5);
-    margin-block-start: calc(var(--stack) * 1.5);
+            margin-block-start: calc(var(--stack) * 1.5);
   }
 
-  :where(h1, h2, h3, h4, h5, h6)+*:not(h1, h2, h3, h4, h5, h6) {
+  :where(h1, h2, h3, h4, h5, h6) + *:not(h1, h2, h3, h4, h5, h6) {
     -webkit-margin-before: calc(var(--stack) / 2);
-    margin-block-start: calc(var(--stack) / 2);
+            margin-block-start: calc(var(--stack) / 2);
   }
 
   :where(li ol:first-of-type, li ul:first-of-type, nav ul) {
     -webkit-margin-before: 0;
-    margin-block-start: 0;
+            margin-block-start: 0;
   }
 
   :where(li li) {
     -webkit-margin-start: 2ch;
-    margin-inline-start: 2ch;
+            margin-inline-start: 2ch;
   }
 
-  :where(input, textarea, select)~* {
+  :where(input, textarea, select) ~ * {
     -webkit-margin-before: calc(var(--stack) / 4);
-    margin-block-start: calc(var(--stack) / 4);
+            margin-block-start: calc(var(--stack) / 4);
   }
 
   :where(figure img) {
@@ -326,7 +328,7 @@
     text-indent: var(--paragraph-indent);
   }
 
-  :where(h1, h2, h3, h4, h5, h6, pre)+p {
+  :where(*:not(p) + p) {
     text-indent: 0;
   }
 
@@ -343,8 +345,8 @@
   :where(h1, h2, h3, h4) {
     overflow-wrap: break-word;
     -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
   }
 
   :where(h1) {
@@ -379,11 +381,13 @@
     font-size: var(--pt-long-primer);
   }
 
-  :where(small, kbd, figcaption, caption, sup, sub, input ~ *, textarea ~ *, select ~ *) {
+  :where(small, kbd, figcaption, caption, sup, sub, input ~ *, textarea
+      ~ *, select ~ *) {
     font-size: var(--pt-bourgeois);
   }
 
-  :where(small, kbd, figcaption, label, legend, summary, caption, sup, sub, input ~ *, textarea ~ *, select ~ *, nav a) {
+  :where(small, kbd, figcaption, label, legend, summary, caption, sup, sub, input
+      ~ *, textarea ~ *, select ~ *, nav a) {
     font-family: var(--font-variant);
     letter-spacing: 0;
   }
@@ -400,7 +404,6 @@
   :where(nav a) {
     text-decoration: none;
   }
-
   :where(nav a)[aria-current] {
     border-image-source: unset;
   }
@@ -457,9 +460,9 @@
   :where(code) {
     text-decoration: underline;
     -webkit-text-decoration-style: dashed;
-    text-decoration-style: dashed;
+            text-decoration-style: dashed;
     -webkit-text-decoration-color: crimson;
-    text-decoration-color: crimson;
+            text-decoration-color: crimson;
     text-underline-offset: 0.35ex;
   }
 
@@ -524,7 +527,7 @@
     font: inherit;
     cursor: pointer;
     -webkit-appearance: auto;
-    appearance: auto;
+            appearance: auto;
   }
 
   :where(input[type="checkbox"], input[type="radio"]) {
@@ -533,8 +536,8 @@
 
   :where(select) {
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+       -moz-appearance: none;
+            appearance: none;
     text-indent: 0.01px;
     text-overflow: "";
   }
@@ -542,7 +545,7 @@
   :where(a) {
     color: inherit;
     -webkit-text-decoration-style: var(--underline);
-    text-decoration-style: var(--underline);
+            text-decoration-style: var(--underline);
     text-underline-offset: 0.3ex;
   }
 
@@ -553,7 +556,7 @@
   :where(abbr, dt) {
     text-decoration: underline;
     -webkit-text-decoration-style: dotted;
-    text-decoration-style: dotted;
+            text-decoration-style: dotted;
     text-underline-offset: 0.3ex;
   }
 
@@ -564,13 +567,13 @@
   :where(blockquote q)::before {
     position: absolute;
     -webkit-margin-start: -1ex;
-    margin-inline-start: -1ex;
+            margin-inline-start: -1ex;
   }
 
   :where(blockquote q q)::before {
     position: static;
     -webkit-margin-start: unset;
-    margin-inline-start: unset;
+            margin-inline-start: unset;
   }
 
   :where(blockquote footer) {
