@@ -38,32 +38,30 @@
     accent-color: crimson;
   }
 
-  [data-theme=verdana] {
+  [data-theme="verdana"] {
     --landmark-hr-size: 2px;
-    --hr-size: 1px;
+    --hr-size: 2px;
     --landmark-hr-margin-block: calc(var(--stack) * 2);
     --hr-margin-block: calc(var(--stack) * 1.5);
-    --underline: wavy;
     --font: "Verdana", system-ui, sans-serif;
     --font-variant: var(--font);
     --font-size: clamp(75%, 65% + 0.5vi, 100%);
     --leading: 1.45;
   }
 }
-
 @layer resets {
   *,
-::before,
-::after {
+  ::before,
+  ::after {
     font-feature-settings: "kern";
     -webkit-font-kerning: normal;
-            font-kerning: normal;
+    font-kerning: normal;
     box-sizing: border-box;
   }
   @media (prefers-color-scheme: dark) {
     *,
-::before,
-::after {
+    ::before,
+    ::after {
       -moz-osx-font-smoothing: grayscale !important;
       -webkit-font-smoothing: antialiased !important;
     }
@@ -75,22 +73,22 @@
   }
 
   input:is([type="checkbox"], [type="radio"]),
-select,
-label,
-button {
+  select,
+  label,
+  button {
     cursor: pointer;
   }
 
   input,
-select,
-textarea,
-button {
+  select,
+  textarea,
+  button {
     font: inherit;
   }
 
   img,
-svg,
-video {
+  svg,
+  video {
     max-inline-size: 100%;
     block-size: auto;
   }
@@ -110,7 +108,6 @@ video {
     }
   }
 }
-
 @layer elements {
   ::-moz-selection {
     color: white;
@@ -146,7 +143,11 @@ video {
     background: transparent;
   }
 
-  :where(input:not([type="radio"], [type="checkbox"], [type="file"]), textarea, select) {
+  :where(
+      input:not([type="radio"], [type="checkbox"], [type="file"]),
+      textarea,
+      select
+    ) {
     border: 1px inset;
     border-radius: 0;
     /* TODO: test this */
@@ -164,17 +165,21 @@ video {
   }
   :where(th, td) {
     -webkit-border-after: 1px solid;
-            border-block-end: 1px solid;
+    border-block-end: 1px solid;
   }
 
   @media (forced-colors: none) {
     :where(th, td) {
-      border-image-source: linear-gradient(to right, gray, color-mix(in oklch, gray 60%, transparent));
+      border-image-source: linear-gradient(
+        to right,
+        gray,
+        color-mix(in oklch, gray 60%, transparent)
+      );
     }
   }
   :where(pre) {
     -webkit-border-start: var(--hr-size) solid;
-            border-inline-start: var(--hr-size) solid;
+    border-inline-start: var(--hr-size) solid;
   }
 
   @media (forced-colors: none) {
@@ -187,7 +192,7 @@ video {
     margin-block: var(--hr-margin-block);
     border: 0;
     -webkit-border-after: 1px solid;
-            border-block-end: 1px solid;
+    border-block-end: 1px solid;
   }
 
   @media (forced-colors: none) {
@@ -201,7 +206,12 @@ video {
 
   @media (forced-colors: none) {
     :where(header, main) + hr {
-      border-image-source: linear-gradient(to right, transparent, currentcolor, transparent);
+      border-image-source: linear-gradient(
+        to right,
+        transparent,
+        currentcolor,
+        transparent
+      );
     }
   }
   @media (forced-colors: none) {
@@ -238,15 +248,24 @@ video {
   }
   body:not(:has(> header)) h1 {
     -webkit-margin-before: 0;
-            margin-block-start: 0;
+    margin-block-start: 0;
   }
 
   :where(header, main, footer) {
     padding-inline: var(--page-padding-inline);
   }
 
-  :where(button, dd, th, td, kbd, select, input:not([type="radio"], [type="checkbox"]), textarea, nav
-      a) {
+  :where(
+      button,
+      dd,
+      th,
+      td,
+      kbd,
+      select,
+      input:not([type="radio"], [type="checkbox"]),
+      textarea,
+      nav a
+    ) {
     padding-block: calc(var(--stack) / 6);
     padding-inline: calc(var(--gutter) / 3);
   }
@@ -265,12 +284,12 @@ video {
 
   :where(figure, dl, blockquote) {
     -webkit-padding-before: calc(var(--stack) / 2.5);
-            padding-block-start: calc(var(--stack) / 2.5);
+    padding-block-start: calc(var(--stack) / 2.5);
   }
 
   :where(details[open]) {
     -webkit-padding-after: var(--stack);
-            padding-block-end: var(--stack);
+    padding-block-end: var(--stack);
   }
 
   :where(fieldset) {
@@ -282,37 +301,47 @@ video {
     padding-inline: var(--gutter);
   }
 
-  :where(*:not(p)
-      + p, figure, form, fieldset, pre, blockquote, ul, ol, dl, details, form
-      li
-      + li, nav) {
+  :where(
+      *:not(p) + p,
+      figure,
+      form,
+      fieldset,
+      pre,
+      blockquote,
+      ul,
+      ol,
+      dl,
+      details,
+      form li + li,
+      nav
+    ) {
     -webkit-margin-before: var(--stack);
-            margin-block-start: var(--stack);
+    margin-block-start: var(--stack);
   }
 
   :where(h1, h2, h3, h4, h5, h6, header nav) {
     -webkit-margin-before: calc(var(--stack) * 1.5);
-            margin-block-start: calc(var(--stack) * 1.5);
+    margin-block-start: calc(var(--stack) * 1.5);
   }
 
   :where(h1, h2, h3, h4, h5, h6) + *:not(h1, h2, h3, h4, h5, h6) {
     -webkit-margin-before: calc(var(--stack) / 2);
-            margin-block-start: calc(var(--stack) / 2);
+    margin-block-start: calc(var(--stack) / 2);
   }
 
   :where(li ol:first-of-type, li ul:first-of-type, nav ul) {
     -webkit-margin-before: 0;
-            margin-block-start: 0;
+    margin-block-start: 0;
   }
 
   :where(li li) {
     -webkit-margin-start: 2ch;
-            margin-inline-start: 2ch;
+    margin-inline-start: 2ch;
   }
 
   :where(input, textarea, select) ~ * {
     -webkit-margin-before: calc(var(--stack) / 4);
-            margin-block-start: calc(var(--stack) / 4);
+    margin-block-start: calc(var(--stack) / 4);
   }
 
   :where(figure img) {
@@ -345,8 +374,8 @@ video {
   :where(h1, h2, h3, h4) {
     overflow-wrap: break-word;
     -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
   }
 
   :where(h1) {
@@ -381,13 +410,35 @@ video {
     font-size: var(--pt-long-primer);
   }
 
-  :where(small, kbd, figcaption, caption, sup, sub, input ~ *, textarea
-      ~ *, select ~ *) {
+  :where(
+      small,
+      kbd,
+      figcaption,
+      caption,
+      sup,
+      sub,
+      input ~ *,
+      textarea ~ *,
+      select ~ *
+    ) {
     font-size: var(--pt-bourgeois);
   }
 
-  :where(small, kbd, figcaption, label, legend, summary, caption, sup, sub, input
-      ~ *, textarea ~ *, select ~ *, nav a) {
+  :where(
+      small,
+      kbd,
+      figcaption,
+      label,
+      legend,
+      summary,
+      caption,
+      sup,
+      sub,
+      input ~ *,
+      textarea ~ *,
+      select ~ *,
+      nav a
+    ) {
     font-family: var(--font-variant);
     letter-spacing: 0;
   }
@@ -460,9 +511,9 @@ video {
   :where(code) {
     text-decoration: underline;
     -webkit-text-decoration-style: dashed;
-            text-decoration-style: dashed;
+    text-decoration-style: dashed;
     -webkit-text-decoration-color: crimson;
-            text-decoration-color: crimson;
+    text-decoration-color: crimson;
     text-underline-offset: 0.35ex;
   }
 
@@ -527,7 +578,7 @@ video {
     font: inherit;
     cursor: pointer;
     -webkit-appearance: auto;
-            appearance: auto;
+    appearance: auto;
   }
 
   :where(input[type="checkbox"], input[type="radio"]) {
@@ -536,8 +587,8 @@ video {
 
   :where(select) {
     -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     text-indent: 0.01px;
     text-overflow: "";
   }
@@ -545,7 +596,7 @@ video {
   :where(a) {
     color: inherit;
     -webkit-text-decoration-style: var(--underline);
-            text-decoration-style: var(--underline);
+    text-decoration-style: var(--underline);
     text-underline-offset: 0.3ex;
   }
 
@@ -556,7 +607,7 @@ video {
   :where(abbr, dt) {
     text-decoration: underline;
     -webkit-text-decoration-style: dotted;
-            text-decoration-style: dotted;
+    text-decoration-style: dotted;
     text-underline-offset: 0.3ex;
   }
 
@@ -567,13 +618,13 @@ video {
   :where(blockquote q)::before {
     position: absolute;
     -webkit-margin-start: -1ex;
-            margin-inline-start: -1ex;
+    margin-inline-start: -1ex;
   }
 
   :where(blockquote q q)::before {
     position: static;
     -webkit-margin-start: unset;
-            margin-inline-start: unset;
+    margin-inline-start: unset;
   }
 
   :where(blockquote footer) {
@@ -597,40 +648,41 @@ video {
     list-style: none;
   }
 
-  [data-theme=verdana] :where(h1, h2, h3, h4, h5, h6, header h1 ~ p, blockquote p) {
+  [data-theme="verdana"]
+    :where(h1, h2, h3, h4, h5, h6, header h1 ~ p, blockquote p) {
     font-size: inherit;
     line-height: inherit;
     letter-spacing: 0;
   }
 
-  [data-theme=verdana] :where(h1, h2, h3, h4, h5, h6)::before {
+  [data-theme="verdana"] :where(h1, h2, h3, h4, h5, h6)::before {
     position: absolute;
     font-weight: 400;
     opacity: 50%;
     transform: translateX(-125%);
   }
 
-  [data-theme=verdana] :where(h1)::before {
+  [data-theme="verdana"] :where(h1)::before {
     content: "H1";
   }
 
-  [data-theme=verdana] :where(h2)::before {
+  [data-theme="verdana"] :where(h2)::before {
     content: "H2";
   }
 
-  [data-theme=verdana] :where(h3)::before {
+  [data-theme="verdana"] :where(h3)::before {
     content: "H3";
   }
 
-  [data-theme=verdana] :where(h4)::before {
+  [data-theme="verdana"] :where(h4)::before {
     content: "H4";
   }
 
-  [data-theme=verdana] :where(h5)::before {
+  [data-theme="verdana"] :where(h5)::before {
     content: "H5";
   }
 
-  [data-theme=verdana] :where(h6)::before {
+  [data-theme="verdana"] :where(h6)::before {
     content: "H6";
   }
 }
