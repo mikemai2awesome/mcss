@@ -558,15 +558,24 @@
     block-size: 100%;
   }
 
+  :where(label:has(input[type="radio"], input[type="checkbox"])) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: calc(var(--gutter) / 4);
+  }
+  :where(label:has(input[type="radio"], input[type="checkbox"]))
+    input[type="radio"],
+  :where(label:has(input[type="radio"], input[type="checkbox"]))
+    input[type="checkbox"] {
+    inline-size: 0.75lh;
+    block-size: 0.75lh;
+    margin-block: 0.125lh;
+  }
+
   :where(input:not([type="checkbox"], [type="radio"]), select, textarea) {
     display: block;
     inline-size: 100%;
-  }
-
-  :where(input[type="radio"], input[type="checkbox"]) {
-    inline-size: 1.5ex;
-    block-size: 1.5ex;
-    vertical-align: baseline;
   }
 
   :where(input[type="file"]) {
@@ -579,10 +588,6 @@
     cursor: pointer;
     -webkit-appearance: auto;
     appearance: auto;
-  }
-
-  :where(input[type="checkbox"], input[type="radio"]) {
-    vertical-align: middle;
   }
 
   :where(select) {
