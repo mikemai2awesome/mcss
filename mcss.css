@@ -150,7 +150,6 @@
     ) {
     border: 1px inset;
     border-radius: 0;
-    /* TODO: test this */
     background: color-mix(in oklch, canvasText 5%, transparent);
   }
 
@@ -558,7 +557,7 @@
   }
 
   :where(label:has(input[type="radio"], input[type="checkbox"])) {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: calc(var(--gutter) / 4);
