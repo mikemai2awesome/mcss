@@ -440,7 +440,6 @@
       nav a
     ) {
     font-family: var(--font-variant);
-    letter-spacing: 0;
   }
 
   :where(code) {
